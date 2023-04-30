@@ -1,0 +1,17 @@
+{
+	"name": "css-parser",
+	"version": "1.0.0",
+	"description": "",
+	"main": "./out/index.js",
+	"scripts": {
+		"test": "ava --update-snapshots",
+		"dev": "npm run dev"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^18.16.3",
+		"ava": "^5.2.0"
+	}
+}

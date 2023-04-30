@@ -1,0 +1,109 @@
+{
+	"name": "css-nesting-compiler",
+	"displayName": "CSS Nesting Compiler",
+	"description": "Superfast css compiler. Compile css nesting for firefox and old browsers",
+	"version": "0.0.1",
+	"publisher": "anilkumarum",
+	"license": "MIT",
+	"icon": "icon.png",
+	"preview": true,
+	"bugs": {
+		"url": "https://github.com/anilkumarum/css-nesting-compiler.git/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/anilkumarum/css-nesting-compiler.git"
+	},
+	"author": {
+		"name": "anilkumarum",
+		"url": "https://github.com/anilkumarum"
+	},
+	"engines": {
+		"vscode": "^1.77.0"
+	},
+	"keywords": [
+		"css",
+		"css compiler",
+		"css nesting",
+		"transpiler"
+	],
+	"categories": [
+		"Other"
+	],
+	"galleryBanner": {
+		"color": "#41205f",
+		"theme": "dark"
+	},
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "cssNestingCompiler.compileCssNesting",
+				"title": "Compile CSS Nesting",
+				"category": "Compile css nesting"
+			}
+		],
+		"configuration": {
+			"title": "module Type",
+			"properties": {
+				"cssnestingCompiler.config.extension": {
+					"type": "string",
+					"enum": [
+						".css",
+						".min.css"
+					],
+					"default": ".min.css",
+					"description": "Extension Name of exported css"
+				},
+				"cssnestingCompiler.config.rootDirectory": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "Defines a rootdirectory to search"
+				},
+				"cssnestingCompiler.config.outDirectory": {
+					"type": "string",
+					"default": "build",
+					"description": "Defines a output directory for output"
+				},
+				"cssnestingCompiler.config.excludeList": {
+					"type": "array",
+					"default": [
+						"**/node_modules/**",
+						".vscode/**"
+					],
+					"description": "All css files inside the folders will be excluded. \n\nExamples: \n'**/node_modules/**',\n'.vscode/**', \n'.history/**' \n\nGlob Patterns are accepted."
+				},
+				"cssnestingCompiler.custom.runCommand": {
+					"type": "string",
+					"default": null,
+					"description": "Add your custom command after css nesting compiled"
+				}
+			}
+		},
+		"keybindings": [
+			{
+				"command": "cssNestingCompiler.compileCssNesting",
+				"key": "ctrl+alt+c",
+				"mac": "cmd+option+c",
+				"when": "editorTextFocus"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "rm -r out/* && npm run bundle -- --minify",
+		"bundle": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^16.7.0",
+		"@types/vscode": "^1.77.0"
+	},
+	"dependencies": {
+		"css-parser": "file:../css-parser"
+	}
+}
