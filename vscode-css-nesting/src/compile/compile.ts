@@ -6,7 +6,7 @@ import { userConfig } from "../utils/helper.js";
 import msgChannel, { OutputLevel } from "../utils/msg-channel.js";
 import { performance } from "node:perf_hooks";
 
-const workspaceFolder = vscode.workspace.workspaceFolders[0].uri.path;
+const workspaceFolder = vscode.workspace.workspaceFolders[0].uri.fsPath;
 
 export default async function compileFile(filePath: string) {
 	try {

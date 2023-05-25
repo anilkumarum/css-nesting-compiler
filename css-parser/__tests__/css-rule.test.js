@@ -1,5 +1,6 @@
 "use strict";
-const test = require("ava");
+const ava = require("ava");
+const test = ava.default;
 const { Parser } = require("../out/index.js");
 const {
 	universalSelector,

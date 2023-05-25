@@ -2,9 +2,9 @@
 	"name": "css-nesting-compiler",
 	"displayName": "CSS Nesting Compiler",
 	"description": "Superfast css compiler. Compile css nesting for firefox and old browsers",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "anilkumarum",
-	"license": "MIT",
+	"license": "GPL-3.0-only",
 	"icon": "icon.png",
 	"preview": true,
 	"bugs": {
@@ -41,7 +41,7 @@
 			{
 				"command": "cssNestingCompiler.compileCssNesting",
 				"title": "Compile CSS Nesting",
-				"category": "Compile css nesting"
+				"category": "Compiler"
 			}
 		],
 		"configuration": {
@@ -94,8 +94,7 @@
 		]
 	},
 	"scripts": {
-		"vscode:prepublish": "rm -r out/* && npm run bundle -- --minify",
-		"bundle": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"bundle": "esbuild ./src/extension.ts --bundle --minify --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./"
 	},
